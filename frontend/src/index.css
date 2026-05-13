@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* Light Theme CSS variables based on Stitch Design */
+:root {
+  --color-bg: #f8f9fc;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f1f5f9;
+  --color-text: #1a1b23;
+  --color-text-muted: #64748b;
+  --color-border: rgba(0, 0, 0, 0.05);
+  --color-primary: #6366f1;
+}
+
+.dark {
+  --color-bg: #0a0b14;
+  --color-surface: #111321;
+  --color-surface-soft: #1a1d2e;
+  --color-text: #ffffff;
+  --color-text-muted: #94a3b8;
+  --color-border: rgba(255, 255, 255, 0.05);
+  --color-primary: #6366f1;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Glassmorphism utilities for light theme */
+.glass-panel {
+  background-color: var(--color-surface);
+  box-shadow: 0 10px 40px -10px rgba(67, 97, 238, 0.08);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+}
+
+.glass-card {
+  background-color: var(--color-surface);
+  box-shadow: 0 4px 20px -5px rgba(67, 97, 238, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px -5px rgba(67, 97, 238, 0.1);
+}
+
+/* Input focus ring */
+.cyber-input {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-main);
+  border-radius: 16px;
+}
+
+.cyber-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+}
+
+/* Button shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.btn-shimmer {
+  background: linear-gradient(90deg, #4361ee, #3b82f6, #4361ee);
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  color: white;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #4361ee, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
