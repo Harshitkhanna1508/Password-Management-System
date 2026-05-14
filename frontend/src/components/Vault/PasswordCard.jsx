@@ -33,10 +33,10 @@ export default function PasswordCard({ entry, onEdit, onDelete }) {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row lg:items-center justify-between p-6 hover:bg-[var(--color-surface-soft)] transition-all border-b border-[var(--color-border)] group relative last:border-b-0 gap-6 lg:gap-4">
+    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-5 md:p-6 hover:bg-[var(--color-surface-soft)] transition-all border-b border-[var(--color-border)] group relative last:border-b-0 gap-4 md:gap-6">
       
       {/* Left section: Identity */}
-      <div className="flex items-center gap-6 min-w-0 lg:w-1/3">
+      <div className="flex items-center gap-4 md:gap-6 min-w-0 sm:w-1/3">
         <div className="w-12 h-12 rounded-2xl bg-[var(--color-surface-soft)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text)] font-black text-xl shrink-0 shadow-sm dark:shadow-lg group-hover:scale-105 transition-all overflow-hidden">
           {domain ? (
             <img 
@@ -67,7 +67,7 @@ export default function PasswordCard({ entry, onEdit, onDelete }) {
       </div>
 
       {/* Middle section: Hidden Data Controls */}
-      <div className="flex items-center lg:justify-center min-w-0 lg:w-1/3">
+      <div className="flex items-center sm:justify-center min-w-0 sm:w-1/3">
         <div className="flex items-center bg-[var(--color-bg)] border border-[var(--color-border)] rounded-xl shadow-inner px-4 py-2 w-full max-w-[200px]">
           <span className="text-xs font-mono text-[var(--color-text-muted)] truncate w-full text-center tracking-widest">
             {showPassword ? entry.password : '••••••••••••••••'}
@@ -76,7 +76,7 @@ export default function PasswordCard({ entry, onEdit, onDelete }) {
       </div>
 
       {/* Right section: Actions */}
-      <div className="flex items-center justify-end gap-1 sm:gap-3 lg:w-1/3 shrink-0">
+      <div className="flex items-center justify-end gap-1 md:gap-3 sm:w-1/3 shrink-0">
         <button onClick={() => setShowPassword(!showPassword)} className="p-2 sm:p-3 text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-soft)] rounded-xl transition-all" title="View Password">
           {showPassword ? (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.477 0-8.268-2.943-9.542-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.477 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>

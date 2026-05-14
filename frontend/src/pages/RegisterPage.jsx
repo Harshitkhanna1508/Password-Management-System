@@ -57,7 +57,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] font-sans relative overflow-hidden flex flex-col transition-colors duration-300">
       {/* Top Header */}
-      <header className="px-8 py-6 flex items-center justify-between relative z-20">
+      <header className="px-6 md:px-8 py-6 flex items-center justify-between relative z-20">
         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <div className="w-8 h-8 bg-[#6366f1] rounded-lg flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -67,26 +67,26 @@ export default function RegisterPage() {
           <span className="text-xl font-black tracking-tight uppercase">VAULTX</span>
         </Link>
         
-        <nav className="hidden lg:flex items-center gap-12 text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-widest">
+        <nav className="hidden xl:flex items-center gap-12 text-sm font-bold text-[var(--color-text-muted)] uppercase tracking-widest">
           <a href="#" className="hover:text-[var(--color-text)] transition-colors">Features</a>
           <a href="#" className="hover:text-[var(--color-text)] transition-colors">Pricing</a>
           <a href="#" className="hover:text-[var(--color-text)] transition-colors">Security</a>
         </nav>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
           <Link to="/login" className="text-sm font-bold text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors">Login</Link>
-          <Link to="/register" className="bg-[#6366f1] text-white px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] shadow-lg hover:scale-105 transition-all">Get Started</Link>
+          <Link to="/register" className="bg-[#6366f1] text-white px-5 md:px-6 py-2.5 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] shadow-lg hover:scale-105 transition-all">Get Started</Link>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center p-6 relative z-10 py-20">
+      <main className="flex-1 flex items-center justify-center p-4 md:p-6 relative z-10 py-12 md:py-20">
         {/* Background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-indigo-900/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] bg-indigo-900/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none"></div>
         
-        <div className="w-full max-w-[580px] bg-[var(--color-surface)]/40 backdrop-blur-xl border border-[var(--color-border)] rounded-[40px] p-12 shadow-xl dark:shadow-2xl relative">
-          <div className="flex flex-col items-center text-center mb-10">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight text-[var(--color-text)]">Secure Your Identity</h2>
+        <div className="w-full max-w-[580px] bg-[var(--color-surface)]/40 backdrop-blur-xl border border-[var(--color-border)] rounded-[32px] md:rounded-[40px] p-6 md:p-12 shadow-xl dark:shadow-2xl relative">
+          <div className="flex flex-col items-center text-center mb-8 md:mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 tracking-tight text-[var(--color-text)]">Secure Your Identity</h2>
             <p className="text-[var(--color-text-muted)] text-sm leading-relaxed">Create your encrypted vault in seconds.</p>
           </div>
 
@@ -261,7 +261,7 @@ export default function RegisterPage() {
       </div>
 
       {/* Footer */}
-      <footer className="px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10 bg-[var(--color-bg)] transition-colors duration-300">
+      <footer className="px-6 md:px-8 py-10 flex flex-col items-center justify-center gap-6 relative z-10 bg-[var(--color-bg)] transition-colors duration-300 border-t border-[var(--color-border)]">
         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
           <div className="w-6 h-6 bg-[#6366f1] rounded-md flex items-center justify-center text-white">
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -271,7 +271,7 @@ export default function RegisterPage() {
           <span className="text-xl font-black tracking-tight uppercase text-[var(--color-text)]">VAULTX</span>
         </Link>
         
-        <div className="flex items-center gap-8 text-[10px] font-bold text-[var(--color-text-muted)] uppercase tracking-widest">
+        <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 text-[10px] font-bold text-[var(--color-text-muted)] uppercase tracking-widest text-center">
           <a href="#" className="hover:text-[var(--color-text)] transition-colors">Privacy Policy</a>
           <a href="#" className="hover:text-[var(--color-text)] transition-colors">Terms of Service</a>
           <a href="#" className="hover:text-[var(--color-text)] transition-colors">Help Center</a>
@@ -279,7 +279,7 @@ export default function RegisterPage() {
           <a href="#" className="hover:text-[var(--color-text)] transition-colors">Status</a>
         </div>
 
-        <p className="text-[10px] text-[var(--color-text-muted)] font-bold uppercase tracking-widest">
+        <p className="text-[10px] text-[var(--color-text-muted)] font-bold uppercase tracking-widest text-center">
           © 2026 VAULTX Digital Security. All rights reserved.
         </p>
       </footer>

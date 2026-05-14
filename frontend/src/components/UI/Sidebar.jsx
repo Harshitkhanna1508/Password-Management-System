@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 
-export default function Sidebar({ onAddItem }) {
+export default function Sidebar({ onAddItem, isOpen, onClose }) {
   const { logout } = useAuth()
   const location = useLocation()
 
@@ -30,62 +30,78 @@ export default function Sidebar({ onAddItem }) {
   ]
 
   return (
-    <aside className="w-[280px] hidden md:flex flex-col h-screen bg-[var(--color-bg)] fixed left-0 top-0 border-r border-[var(--color-border)] z-40 selection:bg-[#6366f1] selection:text-white transition-colors duration-300">
-      {/* Brand Header */}
-      <Link to="/" className="p-8 flex items-center gap-3 hover:opacity-80 transition-opacity">
-        <div className="w-10 h-10 bg-[#6366f1] rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-        </div>
-        <div>
-          <h1 className="text-xl font-black tracking-tight text-[var(--color-text)] uppercase">VAULTX</h1>
-          <p className="text-[8px] text-[var(--color-text-muted)] font-bold tracking-[0.2em] uppercase">Digital Fortitude</p>
-        </div>
-      </Link>
+    <>
+      {/* Overlay for mobile */}
+      <div 
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        onClick={onClose}
+      />
 
-      {/* Nav Section */}
-      <nav className="flex-1 px-4 mt-8 space-y-2">
-        {navItems.map((item) => (
-          <Link
-            key={item.name}
-            to={item.path}
-            className={`flex items-center gap-4 px-6 py-4 rounded-2xl text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 group ${
-              location.pathname === item.path
-                ? 'bg-[#6366f1] text-white shadow-xl shadow-indigo-500/20 translate-x-2'
-                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-soft)]'
-            }`}
-          >
-            <span className={`${location.pathname === item.path ? 'text-white' : 'text-[var(--color-text-muted)] group-hover:text-[#6366f1]'} transition-colors`}>
-              {item.icon}
-            </span>
-            {item.name}
+      <aside className={`w-[280px] flex flex-col h-screen bg-[var(--color-bg)] fixed left-0 top-0 border-r border-[var(--color-border)] z-50 selection:bg-[#6366f1] selection:text-white transition-all duration-300 transform ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+        {/* Brand Header */}
+        <div className="p-8 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <div className="w-10 h-10 bg-[#6366f1] rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <div>
+              <h1 className="text-xl font-black tracking-tight text-[var(--color-text)] uppercase">VAULTX</h1>
+              <p className="text-[8px] text-[var(--color-text-muted)] font-bold tracking-[0.2em] uppercase">Digital Fortitude</p>
+            </div>
           </Link>
-        ))}
-      </nav>
+          <button onClick={onClose} className="md:hidden text-[var(--color-text-muted)] hover:text-[var(--color-text)] p-2">
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-      {/* Bottom Action Section */}
-      <div className="p-8 space-y-6">
-        <button
-          onClick={onAddItem}
-          className="w-full bg-[var(--color-surface-soft)] border border-[var(--color-border)] hover:bg-[#6366f1]/5 text-[var(--color-text)] py-4 px-4 rounded-2xl flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-sm"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
-          </svg>
-          Add New Item
-        </button>
+        {/* Nav Section */}
+        <nav className="flex-1 px-4 mt-8 space-y-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              onClick={onClose}
+              className={`flex items-center gap-4 px-6 py-4 rounded-2xl text-[11px] font-black uppercase tracking-[0.15em] transition-all duration-300 group ${
+                location.pathname === item.path
+                  ? 'bg-[#6366f1] text-white shadow-xl shadow-indigo-500/20 translate-x-2'
+                  : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-soft)]'
+              }`}
+            >
+              <span className={`${location.pathname === item.path ? 'text-white' : 'text-[var(--color-text-muted)] group-hover:text-[#6366f1]'} transition-colors`}>
+                {item.icon}
+              </span>
+              {item.name}
+            </Link>
+          ))}
+        </nav>
 
-        <button
-          onClick={logout}
-          className="flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-text-muted)] hover:text-red-500 transition-colors w-full group"
-        >
-          <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7" />
-          </svg>
-          System Logout
-        </button>
-      </div>
-    </aside>
+        {/* Bottom Action Section */}
+        <div className="p-8 space-y-6">
+          <button
+            onClick={() => { onAddItem(); onClose(); }}
+            className="w-full bg-[var(--color-surface-soft)] border border-[var(--color-border)] hover:bg-[#6366f1]/5 text-[var(--color-text)] py-4 px-4 rounded-2xl flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-sm"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+            </svg>
+            Add New Item
+          </button>
+
+          <button
+            onClick={logout}
+            className="flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-[var(--color-text-muted)] hover:text-red-500 transition-colors w-full group"
+          >
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7" />
+            </svg>
+            System Logout
+          </button>
+        </div>
+      </aside>
+    </>
   )
 }
