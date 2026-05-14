@@ -18,25 +18,30 @@ const app = express()
 
 // ── 1. Security & parsing middleware ──────────────────────────────────────────
 
-// Allow requests from the React frontend (localhost:3000 in dev)
+// Allow requests from the React frontend
+const allowedOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(',').map(u => u.trim())
+  : []
+
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
+    // Allow requests with no origin (curl, Postman, mobile apps)
+    if (!origin) return callback(null, true)
+
     if (process.env.NODE_ENV === 'production') {
-      if (origin === process.env.CLIENT_URL) return callback(null, true);
-      return callback(new Error('Not allowed by CORS'));
+      // Allow any explicitly listed CLIENT_URL(s)
+      if (allowedOrigins.includes(origin)) return callback(null, true)
+      // Fallback: allow any *.onrender.com subdomain (covers previews/renames)
+      if (origin.endsWith('.onrender.com')) return callback(null, true)
+      return callback(new Error('Not allowed by CORS'))
     }
-    
-    // In dev, allow any localhost
-    if (origin.startsWith('http://localhost:')) {
-      return callback(null, true);
-    }
-    
-    callback(new Error('Not allowed by CORS'));
+
+    // In dev, allow any localhost port
+    if (origin.startsWith('http://localhost:')) return callback(null, true)
+
+    callback(new Error('Not allowed by CORS'))
   },
-  credentials: true,           // Allow cookies if needed later
+  credentials: true,
 }))
 
 // Parse incoming JSON request bodies
