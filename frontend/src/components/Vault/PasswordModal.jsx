@@ -103,14 +103,14 @@ export default function PasswordModal({ isOpen, onClose, onSave, initialData = n
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-in fade-in duration-300">
-      <div className="relative w-full max-w-xl rounded-[32px] md:rounded-[40px] p-6 md:p-10 overflow-y-auto max-h-[90vh] bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl dark:shadow-[0_0_80px_rgba(0,0,0,0.5)] animate-in zoom-in-95 duration-300">
+      <div className="relative w-full max-w-xl rounded-[40px] p-10 overflow-y-auto max-h-[90vh] bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xl dark:shadow-[0_0_80px_rgba(0,0,0,0.5)] animate-in zoom-in-95 duration-300">
         
-        <div className="flex justify-between items-center mb-6 md:mb-10">
+        <div className="flex justify-between items-center mb-10">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-text)] tracking-tight">
+            <h2 className="text-3xl font-bold text-[var(--color-text)] tracking-tight">
               {initialData ? 'Edit Asset' : 'Secure New Asset'}
             </h2>
-            <p className="text-[9px] md:text-[10px] font-bold text-[var(--color-text-muted)] uppercase tracking-widest mt-1">Impenetrable Vault Storage</p>
+            <p className="text-[10px] font-bold text-[var(--color-text-muted)] uppercase tracking-widest mt-1">Impenetrable Vault Storage</p>
           </div>
           <button 
             onClick={onClose}

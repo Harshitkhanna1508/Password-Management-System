@@ -58,21 +58,21 @@ export default function GeneratorPage() {
         {/* Main Generator Interface */}
         <div className="lg:col-span-8 space-y-8">
           {/* Display Card */}
-          <div className="bg-[var(--color-surface)]/40 backdrop-blur-xl border border-[var(--color-border)] rounded-[40px] p-6 md:p-10 shadow-sm dark:shadow-2xl relative overflow-hidden group min-h-[300px] flex flex-col justify-center items-center text-center">
+          <div className="bg-[var(--color-surface)]/40 backdrop-blur-xl border border-[var(--color-border)] rounded-[40px] p-10 shadow-sm dark:shadow-2xl relative overflow-hidden group min-h-[300px] flex flex-col justify-center items-center text-center">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#6366f1]/10 blur-[100px] rounded-full group-hover:bg-[#6366f1]/20 transition-all duration-700"></div>
             
             <p className="text-[10px] font-black text-[#6366f1] uppercase tracking-[0.3em] mb-6 relative z-10">Live Secure Output</p>
             
-            <div className="relative z-10 w-full max-w-2xl px-4 md:px-6 py-8 bg-[var(--color-bg)]/50 border border-[var(--color-border)] rounded-[32px] shadow-inner mb-8 group-hover:scale-[1.02] transition-transform duration-500">
-              <span className="text-2xl sm:text-3xl md:text-5xl font-mono font-bold tracking-tighter text-[var(--color-text)] break-all px-2 md:px-4">
+            <div className="relative z-10 w-full max-w-2xl px-6 py-8 bg-[var(--color-bg)]/50 border border-[var(--color-border)] rounded-[32px] shadow-inner mb-8 group-hover:scale-[1.02] transition-transform duration-500">
+              <span className="text-3xl md:text-5xl font-mono font-bold tracking-tighter text-[var(--color-text)] break-all px-4">
                 {currentPassword}
               </span>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 relative z-10 w-full sm:w-auto">
+            <div className="flex gap-4 relative z-10">
               <button 
                 onClick={handleCopy}
-                className="bg-[#6366f1] text-white px-8 md:px-10 py-4 rounded-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] shadow-xl shadow-indigo-500/20 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-3"
+                className="bg-[#6366f1] text-white px-10 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] shadow-xl shadow-indigo-500/20 hover:scale-105 active:scale-95 transition-all flex items-center gap-3"
               >
                 {copied ? (
                   <>
@@ -82,13 +82,13 @@ export default function GeneratorPage() {
                 ) : (
                   <>
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg>
-                    Copy Key
+                    Copy to Clipboard
                   </>
                 )}
               </button>
               <button 
                 onClick={() => setVariationIndex(prev => prev + 1)}
-                className="bg-[var(--color-surface-soft)] text-[var(--color-text)] border border-[var(--color-border)] px-8 py-4 rounded-full text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[var(--color-surface)] transition-all flex items-center justify-center"
+                className="bg-[var(--color-surface-soft)] text-[var(--color-text)] border border-[var(--color-border)] px-8 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[var(--color-surface)] transition-all"
               >
                 Shuffle Style
               </button>
@@ -96,7 +96,7 @@ export default function GeneratorPage() {
           </div>
 
           {/* Parameters Grid */}
-          <div className="bg-[var(--color-surface)]/40 backdrop-blur-xl border border-[var(--color-border)] rounded-[40px] p-6 md:p-10 shadow-sm dark:shadow-2xl">
+          <div className="bg-[var(--color-surface)]/40 backdrop-blur-xl border border-[var(--color-border)] rounded-[40px] p-10 shadow-sm dark:shadow-2xl">
             <h3 className="text-xl font-bold tracking-tight mb-8">Generation Parameters</h3>
             
             <div className="grid md:grid-cols-2 gap-8">
