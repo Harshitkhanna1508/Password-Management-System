@@ -1,8 +1,11 @@
 // api.js — Axios instance with base URL and auth token injection
 import axios from 'axios'
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
+console.log('[VaultX] API base URL:', BASE_URL)
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
+  baseURL: BASE_URL,
 })
 
 // Attach JWT token to every request automatically
