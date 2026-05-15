@@ -11,7 +11,7 @@ const crypto = require('crypto')
 const { ENCRYPTION_KEY } = require('../config/env')
 
 const ALGORITHM = 'aes-256-cbc'
-const KEY       = Buffer.from(ENCRYPTION_KEY, 'utf8') // must be 32 bytes
+const KEY       = crypto.createHash('sha256').update(String(ENCRYPTION_KEY)).digest() // always 32 bytes
 const IV_LENGTH = 16 // AES block size
 
 /**
